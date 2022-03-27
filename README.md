@@ -10,4 +10,4 @@ Project for HCI 2. Pantry inventory application
 - make sure you're in the 'PantryPal' directory (using ``cd PantryPal``)
 - use ``npm start`` to start the development server
 - press 'w' in the terminal to open web
-- copy and paste the http://localhost:----- link shown in the console to view the development server
+- copy and paste the http://localhost:----- (or ctrl click the link) link shown in the console to view the development server
