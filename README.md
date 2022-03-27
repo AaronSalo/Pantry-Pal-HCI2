@@ -2,7 +2,7 @@
 Project for HCI 2. Pantry inventory application
 
 ## SETUP
-- Clone this directory and cd into it.
+- **Clone this directory and cd into it.** Make sure you're in the top directory of this repo before continuing.
 - Install [Node](https://nodejs.org/en/download/) with **chocolaty** (just make sure you check off the button when going through the installer)
   - Note: If you already have node/npm use ``npm update -g`` to update to the newest version
 - You may need to restart, use ``npm -v`` to check if the install was successful. Should be version 8.5.0.
