@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const list = [
+const inventoryList = [
   {
     product: 'Item #1',
     quantity: 1,
@@ -24,6 +24,7 @@ export default function App() {
       />
 
 
+      // Add button
       <TouchableOpacity
         style={{
           borderWidth: 2,
@@ -40,6 +41,8 @@ export default function App() {
         }}>
         <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
       </TouchableOpacity>
+
+
       <StatusBar style="auto" />
     </View >
   );
