@@ -1,12 +1,64 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+<<<<<<< Updated upstream
 import { StyleSheet, Text, View } from 'react-native';
+=======
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ListItem from './ListItem.js';
+import './ListItem.css';
+//import testPrint from './testFile';
+
+const inventoryList = [
+  {
+    product: 'Item #1',
+    quantity: 1,
+    tags: 'fruit',
+    forShopping: true,
+  },
+  {
+    product: 'Item #2',
+    quantity: 2,
+    tags: 'meat',
+    forShopping: false,
+  },
+]
+>>>>>>> Stashed changes
 
 export default function App() {
   return (
     <View style={styles.container}>
+<<<<<<< Updated upstream
       <Text>YOU DID IT, welcome to PANTRY PAL</Text>
       <Text>Open up App.js to start working on your app!</Text>
+=======
+      <ListItem product="Steak" tags="meat" quantity="7" />
+      <FlatList
+        data={inventoryList}
+        renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />} // Needs ListItem
+        //renderItem={({ item }) => <Text style={styles.item}>{item.product}</Text>} // Needs ListItem
+      />
+
+
+      // Add button
+      <TouchableOpacity
+        style={{
+          borderWidth: 2,
+          borderColor: 'rgba(0,0,0,0.2)',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 70,
+          position: 'absolute',
+          bottom: 10,
+          right: 10,
+          height: 70,
+          backgroundColor: '#fff',
+          borderRadius: 100,
+        }}>
+        <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
+      </TouchableOpacity>
+
+
+>>>>>>> Stashed changes
       <StatusBar style="auto" />
     </View>
   );

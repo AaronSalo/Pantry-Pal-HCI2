@@ -1,0 +1,68 @@
+#listItem {
+	display:block;
+	width:100%;
+	height: 4em;
+
+	border-color: #E7E7F0;
+	border-style: solid;
+	border-width: 0em 0em 0.19em 0em;
+}
+
+
+#listItem .left {
+	float: left;
+	width: 2em;
+}
+
+#listItem .middle {
+	display: block;
+	float: left;
+	padding-left: 2em;
+	padding-top: 0.25em;
+}
+
+#listItem .right {
+	float: right;
+	padding-top: 0.25em;
+}
+
+
+#listItem .checkbox {
+	float: left;
+	padding-top: 1em;
+	padding-left: 1em;
+}
+
+#listItem .title {
+	font-size: 1.5em;
+}
+
+#listItem .tagContainer {
+	font-size: 0.75em;
+
+	border-color: #000000;
+	border-style: solid;
+	border-width: 0.2em;
+	border-radius: 1em;
+
+	padding: 0.1em 0em;
+}
+
+#listItem .tag {
+	text-align: center;
+}
+
+#listItem .quantity {
+	float: right;
+	font-size: 1.5em;
+	padding-right: 1.5em;
+	padding-top: 0.5em;
+}
+
+#listItem .remove {
+	float: right;
+	padding-right: 0.5em;
+	padding-top: 0.25em;
+	font-size: 2em;
+	color: #D0D0D0;
+}
