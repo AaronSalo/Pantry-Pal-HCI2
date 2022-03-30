@@ -1,40 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-<<<<<<< Updated upstream
-import { StyleSheet, Text, View } from 'react-native';
-=======
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
-//import testPrint from './testFile';
 
 const inventoryList = [
   {
     product: 'Item #1',
     quantity: 1,
-    tags: 'fruit',
+    tags: ['fruit', 'vegetable'],
     forShopping: true,
   },
   {
     product: 'Item #2',
     quantity: 2,
-    tags: 'meat',
+    tags: ['meat'],
     forShopping: false,
   },
 ]
->>>>>>> Stashed changes
 
 export default function App() {
   return (
     <View style={styles.container}>
-<<<<<<< Updated upstream
-      <Text>YOU DID IT, welcome to PANTRY PAL</Text>
-      <Text>Open up App.js to start working on your app!</Text>
-=======
       <ListItem product="Steak" tags="meat" quantity="7" />
       <FlatList
         data={inventoryList}
-        renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />} // Needs ListItem
+        renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
         //renderItem={({ item }) => <Text style={styles.item}>{item.product}</Text>} // Needs ListItem
       />
 
@@ -58,9 +49,8 @@ export default function App() {
       </TouchableOpacity>
 
 
->>>>>>> Stashed changes
       <StatusBar style="auto" />
-    </View>
+    </View >
   );
 }
 
@@ -70,5 +60,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  item: {
+    //padding: 10,
+    fontSize: 26,
+    height: 44,
+    width: '100%',
   },
 });

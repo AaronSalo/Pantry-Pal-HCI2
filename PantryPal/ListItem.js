@@ -2,18 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const inventoryList = [
-  {
-    product: 'Item #1',
-    quantity: 1,
-    forShopping: true,
-  },
-  {
-    product: 'Item #2',
-    quantity: 2,
-    forShopping: false,
-  },
-]
 
 /*class ListItem extends React.Component {
   render() {
@@ -42,6 +30,13 @@ const inventoryList = [
 }*/
 
 export default function ListItem(props) {
+  var renderedTags = [];
+  for (var i = 0; i < props.tags.length; i++) {
+//    renderedTags += '<div class="tag">' + props.tags[i] + '</div>';
+    renderedTags += '<div class="tag">' + props.tags[i] + '</div>';
+  }
+  //renderedTags.map();
+//  var renderedTags = props.tags.map(item => <div class="tag">{item}</div>);
   return (
     <div id="listItem">
       <div class="checkbox">
@@ -51,11 +46,7 @@ export default function ListItem(props) {
         <div class="title">
           {props.product}
         </div>
-        <div class="tagContainer">
-            <div class="tag">
-              {props.tags}
-            </div>
-        </div>
+          <div class="tagContainer" dangerouslySetInnerHTML={{__html: renderedTags}}/>
       </div>
       <div class="right">
         <div class="remove"><a href="javascript:void(0);" onClick="removeItem(this)">X</a></div>
