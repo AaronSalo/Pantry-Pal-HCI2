@@ -1,57 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button} from 'react-native';
-// https://github.com/tableflip/react-native-select-multiple (This ListView has checkboxes built in?)
+import ListItem from './ListItem.js';
+import './ListItem.css';
+import './App.css';
+import AddItemModal from './AddItemModal.js';
+import {Modal} from './Modal.js';
 
+//const inventoryList = [
 const initList = [
   {
-    product: 'Item',
-    tag: 'Fruit',
-    quantity: 0,
+    product: 'Item #1',
+    quantity: 1,
+    tags: ['fruit', 'vegetable'],
     forShopping: true,
   },
   {
-    product: 'Item',
-    tag: 'Fruit',
+    product: 'Item #2',
     quantity: 2,
-    forShopping: false,
-  },
-  {
-    product: 'Item',
-    tag: 'Veggie',
-    quantity: 3,
-    forShopping: false,
-  },
-  {
-    product: 'Item',
-    tag: 'Fruit',
-    quantity: 0,
-    forShopping: true,
-  },
-  {
-    product: 'Item',
-    tag: 'Veggie',
-    quantity: 5,
-    forShopping: false,
-  },
-  {
-    product: 'Item',
-    tag: 'Veggie',
-    quantity: 21,
+    tags: ['meat'],
     forShopping: false,
   },
 ]
 
 export default function App() {
-
   const [inventoryList, setInventoryList] = useState(initList); //Later on maybe init as empty list
 
 
   function filterByCategory(category) {
     console.log("Filtering by " + category);
 
-    var filteredResults = inventoryList.filter( item => item.tag.toLowerCase() == category.toLowerCase() );
-    var otherItems = inventoryList.filter( item => item.tag.toLowerCase() != category.toLowerCase() );
+    var filteredResults = inventoryList.filter( item => item.tags.includes(category) );
+    var otherItems = inventoryList.filter( item => !item.tags.includes(category) );
 
     var sortedList = filteredResults.concat(otherItems);
 
@@ -75,45 +55,31 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
       <TextInput
         // Search bar
         style={styles.input}
         onFocus={() => onPressInSearch()}
         onChangeText={(text) => onTextChange(text)}
-        placeholder="Search.."
+        placeholder="Search"
       />
 
-      <View style={styles.list}>
-        <FlatList
-          // ListView (does not currently use ListItem)
-          data={inventoryList}
-          renderItem={({ item }) => renderItem(item)}
-        />
-      </View>
+      <div id="filterContainer">
+        <button onClick={() => filterByCategory("Fruit") }> Fruit</button>
+        <button onClick={() => filterByCategory("Veggie") }> Veggies</button>
+        <button onClick={() => filterByCategory("Meat") }> Meat</button>
+        <button onClick={() => filterByCategory("Dairy") }> Dairy</button>
+        <button onClick={() => filterByCategory("Organic") }> Organic</button>
+        <button className="shopping" onClick={() => filterByShoppingList() }> Shopping List</button>
+      </div>
 
-      <button onClick={() => filterByCategory("Fruit") }> Fruit</button>
-      <button onClick={() => filterByCategory("Veggie") }> Veggies</button>
-      <button onClick={() => filterByShoppingList() }> Shopping</button>
+      <ListItem product="Steak" tags={["meat"]} quantity="7" />
+      <FlatList
+        style={{width: "100%"}}
+        data={inventoryList}
+        renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
+      />
 
-      <TouchableOpacity
-        // Add button
-        style={{
-          borderWidth: 2,
-          borderColor: 'rgba(0,0,0,0.2)',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: 70,
-          position: 'absolute',
-          bottom: 10,
-          right: 10,
-          height: 70,
-          backgroundColor: '#fff',
-          borderRadius: 100,
-        }}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
-      </TouchableOpacity>
-
+      <AddItemModal />
 
       <StatusBar style="auto" />
     </View >
@@ -129,8 +95,6 @@ function onTextChange(text) {
   // What happens as you type in the search bar
   console.log(text);
 }
-
-
 
 
 function renderItem(item) {
@@ -182,3 +146,4 @@ const styles = StyleSheet.create({
     color: '#ff0000',
   },
 });
+
