@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button} from 'react-native';
 // https://github.com/tableflip/react-native-select-multiple (This ListView has checkboxes built in?)
 
-const inventoryList = [
+const initList = [
   {
     product: 'Item',
     tag: 'Fruit',
@@ -42,9 +42,37 @@ const inventoryList = [
   },
 ]
 
-const globalList = React.createContext(inventoryList); // something like this to allow dynamically updating arrays
-
 export default function App() {
+
+  const [inventoryList, setInventoryList] = useState(initList); //Later on maybe init as empty list
+
+
+  function filterByCategory(category) {
+    console.log("Filtering by " + category);
+
+    var filteredResults = inventoryList.filter( item => item.tag.toLowerCase() == category.toLowerCase() );
+    var otherItems = inventoryList.filter( item => item.tag.toLowerCase() != category.toLowerCase() );
+
+    var sortedList = filteredResults.concat(otherItems);
+
+    setInventoryList(sortedList);
+    console.log("Filtered List: ");
+    console.log(inventoryList);
+  }  
+
+  function filterByShoppingList() {
+    console.log("Filtering by shopping list items");
+
+    var filteredResults = inventoryList.filter( item => item.forShopping);
+    var otherItems = inventoryList.filter( item => !item.forShopping);
+
+    var sortedList = filteredResults.concat(otherItems);
+
+    setInventoryList(sortedList);
+    console.log("Filtered List: ");
+    console.log(inventoryList);
+  }
+
   return (
     <View style={styles.container}>
 
@@ -64,7 +92,9 @@ export default function App() {
         />
       </View>
 
-      <button onClick={() => filterByCategory("Fruit") }> Click me</button>
+      <button onClick={() => filterByCategory("Fruit") }> Fruit</button>
+      <button onClick={() => filterByCategory("Veggie") }> Veggies</button>
+      <button onClick={() => filterByShoppingList() }> Shopping</button>
 
       <TouchableOpacity
         // Add button
@@ -101,16 +131,7 @@ function onTextChange(text) {
 }
 
 
-function filterByCategory(category) {
-  console.log("Filtering by " + category);
 
-  var filteredResults = inventoryList.filter( item => item.tag.toLowerCase() == category.toLowerCase() );
-  var otherItems = inventoryList.filter( item => item.tag.toLowerCase() != category.toLowerCase() );
-
-  inventoryList = filteredResults.concat(otherItems);
-  console.log("Filtered List: ");
-  console.log(inventoryList);
-}
 
 function renderItem(item) {
   if (item.forShopping) {
