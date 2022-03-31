@@ -1,40 +1,48 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button} from 'react-native';
 // https://github.com/tableflip/react-native-select-multiple (This ListView has checkboxes built in?)
 
 const inventoryList = [
   {
     product: 'Item',
+    tag: 'Fruit',
     quantity: 0,
     forShopping: true,
   },
   {
     product: 'Item',
+    tag: 'Fruit',
     quantity: 2,
     forShopping: false,
   },
   {
     product: 'Item',
+    tag: 'Veggie',
     quantity: 3,
     forShopping: false,
   },
   {
     product: 'Item',
+    tag: 'Fruit',
     quantity: 0,
     forShopping: true,
   },
   {
     product: 'Item',
+    tag: 'Veggie',
     quantity: 5,
     forShopping: false,
   },
   {
     product: 'Item',
+    tag: 'Veggie',
     quantity: 21,
     forShopping: false,
   },
 ]
+
+const globalList = React.createContext(inventoryList); // something like this to allow dynamically updating arrays
 
 export default function App() {
   return (
@@ -55,6 +63,8 @@ export default function App() {
           renderItem={({ item }) => renderItem(item)}
         />
       </View>
+
+      <button onClick={() => filterByCategory("Fruit") }> Click me</button>
 
       <TouchableOpacity
         // Add button
@@ -88,6 +98,18 @@ function onPressInSearch() {
 function onTextChange(text) {
   // What happens as you type in the search bar
   console.log(text);
+}
+
+
+function filterByCategory(category) {
+  console.log("Filtering by " + category);
+
+  var filteredResults = inventoryList.filter( item => item.tag.toLowerCase() == category.toLowerCase() );
+  var otherItems = inventoryList.filter( item => item.tag.toLowerCase() != category.toLowerCase() );
+
+  inventoryList = filteredResults.concat(otherItems);
+  console.log("Filtered List: ");
+  console.log(inventoryList);
 }
 
 function renderItem(item) {
