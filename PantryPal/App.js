@@ -3,6 +3,8 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
+import AddItemModal from './AddItemModal.js';
+import {Modal} from './Modal.js';
 
 const inventoryList = [
   {
@@ -27,11 +29,10 @@ export default function App() {
         style={{width: "100%"}}
         data={inventoryList}
         renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
-        //renderItem={({ item }) => <Text style={styles.item}>{item.product}</Text>} // Needs ListItem
       />
 
+      <Modal><p>MoDaL</p></Modal>
 
-      // Add button
       <TouchableOpacity
         style={{
           borderWidth: 2,
