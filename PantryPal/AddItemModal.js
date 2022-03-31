@@ -35,7 +35,28 @@ function AddItemModal() {
           <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
         </TouchableOpacity>
         <Modal handleShow={show} handleClose={ closeModal } >
-          <p>mOdAl</p>
+          <div className="topPart">
+            <div className="left">
+              <label htmlFor="productName">Name:</label>
+              <input type="text" id="productName" name="productName"/>
+              <br/>
+              <label htmlFor="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity"/>
+            </div>
+
+            <div className="right">
+              <div className="buyTag">Need To Buy</div>
+            </div>
+          </div>
+
+          <div className="tagContainer">
+            <div className="tag">Fruit</div>
+            <div className="tag">Veggies</div>
+            <div className="tag">Meat</div>
+            <div className="tag">Dairy</div>
+            <div className="tag">Organic</div>
+            <div className="tag">+</div>
+          </div>
         </Modal>
       </div>
     );
@@ -49,4 +70,5 @@ export default AddItemModal
       <P>Bunger</P>
     </Modal>
 }*/
+
 

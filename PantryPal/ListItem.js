@@ -7,22 +7,22 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
   render() {
     return (
     <div id="listItem">
-      <div class="checkbox">
-        <input type="checkbox" id="itemChecked"/>
+      <div className="checkbox">
+        <input typeName="checkbox" id="itemChecked"/>
       </div>
-      <div class="middle">
-        <div class="title">
+      <div className="middle">
+        <div className="title">
           {name}
         </div>
-        <div class="tagContainer">
-            <div class="tag">
+        <div className="tagContainer">
+            <div className="tag">
               {tags}
             </div>
         </div>
       </div>
-      <div class="right">
-        <div class="remove">X</div>
-        <div class="quantity">{quantity}</div>
+      <div className="right">
+        <div className="remove">X</div>
+        <div className="quantity">{quantity}</div>
       </div>
     </div>
     );
@@ -37,18 +37,18 @@ export default function ListItem(props) {
 
   return (
     <div id="listItem">
-      <div class="checkbox">
+      <div className="checkbox">
         <input type="checkbox" id="itemChecked"/>
       </div>
-      <div class="middle">
-        <div class="title">
+      <div className="middle">
+        <div className="title">
           {props.product}
         </div>
-          <div class="tagContainer" dangerouslySetInnerHTML={{__html: renderedTags}}/>
+          <div className="tagContainer" dangerouslySetInnerHTML={{__html: renderedTags}}/>
       </div>
-      <div class="right">
-        <div class="remove"><a href="javascript:void(0);" >X</a></div>
-        <div class="quantity">{props.quantity}</div>
+      <div className="right">
+        <div className="remove"><a href="javascript:void(0);" >X</a></div>
+        <div className="quantity">{props.quantity}</div>
       </div>
     </div>
   );
@@ -90,4 +90,5 @@ export default function ListItem(props) {
     </View >
   );
 }*/
+
 
