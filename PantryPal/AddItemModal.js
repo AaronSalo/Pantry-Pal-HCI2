@@ -1,30 +1,45 @@
-import React, {Component} from 'react';
+import React, {useState, Component} from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 import ReactDOM from 'react-dom';
 import {Modal} from './Modal.js';
 
-class AddItemModal extends Component {
-  constructor() {
-    super();
-    this.state = { show: false };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
-  }
+function AddItemModal() {
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
+    const [show, setShow] = useState(true);
 
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-
-  render() {
+    const closeModal = () => {
+      console.log("Close the modal");
+      setShow(false);
+    }    
+    const showModal = () => {
+      console.log("Open the modal");
+      setShow(true);
+    }
     return (
-      <Modal show={this.state.show} handleClose={this.hideModal}>
-        <p>mOdAl</p>
-      </Modal>
+      <div>
+        <TouchableOpacity
+          style={{
+            borderWidth: 2,
+            borderColor: 'rgba(0,0,0,0.2)',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 70,
+            position: 'absolute',
+            bottom: 10,
+            right: 10,
+            height: 70,
+            backgroundColor: '#fff',
+            borderRadius: 100,
+          }}
+          onPress= {showModal}>
+          <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
+        </TouchableOpacity>
+        <Modal handleShow={show} handleClose={ closeModal } >
+          <p>mOdAl</p>
+        </Modal>
+      </div>
     );
-  }
+  
 }
 
 export default AddItemModal

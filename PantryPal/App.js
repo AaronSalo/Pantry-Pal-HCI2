@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
 import AddItemModal from './AddItemModal.js';
@@ -31,25 +31,7 @@ export default function App() {
         renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
       />
 
-      <Modal><p>MoDaL</p></Modal>
-
-      <TouchableOpacity
-        style={{
-          borderWidth: 2,
-          borderColor: 'rgba(0,0,0,0.2)',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: 70,
-          position: 'absolute',
-          bottom: 10,
-          right: 10,
-          height: 70,
-          backgroundColor: '#fff',
-          borderRadius: 100,
-        }}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }}>+</Text>
-      </TouchableOpacity>
-
+      <AddItemModal />
 
       <StatusBar style="auto" />
     </View >

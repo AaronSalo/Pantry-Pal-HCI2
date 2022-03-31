@@ -47,7 +47,7 @@ export default function ListItem(props) {
           <div class="tagContainer" dangerouslySetInnerHTML={{__html: renderedTags}}/>
       </div>
       <div class="right">
-        <div class="remove"><a href="javascript:void(0);" onClick="removeItem(this)">X</a></div>
+        <div class="remove"><a href="javascript:void(0);" >X</a></div>
         <div class="quantity">{props.quantity}</div>
       </div>
     </div>
