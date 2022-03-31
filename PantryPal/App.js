@@ -22,8 +22,9 @@ const inventoryList = [
 export default function App() {
   return (
     <View style={styles.container}>
-      <ListItem product="Steak" tags="meat" quantity="7" />
+      <ListItem product="Steak" tags={["meat"]} quantity="7" />
       <FlatList
+        style={{width: "100%"}}
         data={inventoryList}
         renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
         //renderItem={({ item }) => <Text style={styles.item}>{item.product}</Text>} // Needs ListItem
