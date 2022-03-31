@@ -29,8 +29,8 @@ export default function App() {
   function filterByCategory(category) {
     console.log("Filtering by " + category);
 
-    var filteredResults = inventoryList.filter( item => item.tag.toLowerCase() == category.toLowerCase() );
-    var otherItems = inventoryList.filter( item => item.tag.toLowerCase() != category.toLowerCase() );
+    var filteredResults = inventoryList.filter( item => item.tags.includes(category) );
+    var otherItems = inventoryList.filter( item => !item.tags.includes(category) );
 
     var sortedList = filteredResults.concat(otherItems);
 
@@ -59,7 +59,7 @@ export default function App() {
         style={styles.input}
         onFocus={() => onPressInSearch()}
         onChangeText={(text) => onTextChange(text)}
-        placeholder="Search.."
+        placeholder="Search"
       />
 
       <div id="filterContainer">
