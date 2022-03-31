@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button} from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
+import './App.css';
 import AddItemModal from './AddItemModal.js';
 import {Modal} from './Modal.js';
 
@@ -65,7 +66,10 @@ export default function App() {
       <div id="filterContainer">
         <button onClick={() => filterByCategory("Fruit") }> Fruit</button>
         <button onClick={() => filterByCategory("Veggie") }> Veggies</button>
-        <button onClick={() => filterByShoppingList() }> Shopping</button>
+        <button onClick={() => filterByCategory("Meat") }> Meat</button>
+        <button onClick={() => filterByCategory("Dairy") }> Dairy</button>
+        <button onClick={() => filterByCategory("Organic") }> Organic</button>
+        <button className="shopping" onClick={() => filterByShoppingList() }> Shopping List</button>
       </div>
 
       <ListItem product="Steak" tags={["meat"]} quantity="7" />
