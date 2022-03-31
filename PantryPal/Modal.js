@@ -1,19 +1,19 @@
 import './Modal.css';
 
-const Modal = ({ handleClose, handleShow, children }) => {
+const Modal = ({ handleClose, handleShow, onFormComplete, children }) => {
   const showHideClassName = handleShow ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
         <button onClick={handleClose}>
-          Close
+          Cancel
         </button>
         <hr/>
         <form id="addItemForm">
           {children}
           <div className="done">
-            <button type="button" onClick={handleClose}>
+            <button type="button" onClick={onFormComplete}>
               Done
             </button>
           </div>
