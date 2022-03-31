@@ -82,7 +82,7 @@ export default function App() {
       <AddItemModal />
 
       <StatusBar style="auto" />
-    </View>
+    </View >
   );
 }
 
@@ -90,7 +90,6 @@ function onPressInSearch() {
   // What happens when you press the search bar
   console.log("Pressed search button");
 }
-
 
 function onTextChange(text) {
   // What happens as you type in the search bar
