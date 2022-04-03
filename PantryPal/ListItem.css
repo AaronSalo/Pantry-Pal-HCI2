@@ -13,7 +13,7 @@
 	background: rgb(204, 228, 231);
 }
 
-/* CSS to hide original  checkbox*/
+/* CSS to hide original checkbox*/
 input[type="checkbox"] {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
