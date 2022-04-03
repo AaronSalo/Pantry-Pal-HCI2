@@ -69,7 +69,7 @@ export default function App() {
         <button onClick={() => filterByCategory("Meat") }> Meat</button>
         <button onClick={() => filterByCategory("Dairy") }> Dairy</button>
         <button onClick={() => filterByCategory("Organic") }> Organic</button>
-        <button className="shopping" onClick={() => filterByShoppingList() }> Shopping List</button>
+        <button className="shopping" onClick={() => filterByShoppingList() }> Shopping<br/>List</button>
       </div>
 
       <ListItem product="Steak" tags={["meat"]} quantity="7" />
