@@ -9,12 +9,18 @@
 
 .modal-main {
   position:fixed;
-  background: white;
+  background: #F7F7FF;
   width: 100%;
   height: auto;
   bottom:0;
   left:50%;
   transform: translate(-50%, 0);
+
+  padding-top: 0.3em;
+  border-style: solid;
+  border-color: #D0D0DE;
+  border-width: 0.15em 0 0 0;
+  /*border-radius: 0.5em 0.5em 0 0;*/
 }
 
 .display-block {
@@ -57,10 +63,12 @@
 	padding-top: 1.5em;
 	margin-right: 0.5em;
 
+	background: linear-gradient(0deg, #D0E2E6 0%, #CCE1E5 50%, #D0E2E6 100%);
+
 	border-color: #000000;
 	background-color: #ffffff;
 	border-style: solid;
-	border-width: 0.2em;
+	border-width: 0.1em;
 	border-radius: 1em;
 
 }
@@ -74,10 +82,12 @@
 	padding-top: 1.5em;
 	margin-right: 0.5em;
 
+	/*background: linear-gradient(0deg, #7FC9D9 0%, #AA0000 50%, #7FC9D9 100%);*/
+
 	border-color: #000000;
-	background-color: #0bb8fc;
+	background-color: #7FC9D9;
 	border-style: solid;
-	border-width: 0.2em;
+	border-width: 0.1em;
 	border-radius: 1em;
 }
 #addItemForm .buyTag {
@@ -91,7 +101,7 @@
 
 	border-color: #000000;
 	border-style: solid;
-	border-width: 0.2em;
+	border-width: 0.1em;
 	border-radius: 1em;
 
 }
