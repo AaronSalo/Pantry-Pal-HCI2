@@ -68,9 +68,10 @@ input[type="checkbox"] {
 	text-align: center;
 	float: left;
 
+	background: #fff;
 	border-color: #000000;
 	border-style: solid;
-	border-width: 0.2em;
+	border-width: 0.1em;
 	border-radius: 1em;
 
 	padding: 0.2em 0.45em;

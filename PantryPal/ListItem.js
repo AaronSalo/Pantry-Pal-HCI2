@@ -20,8 +20,8 @@ export default function ListItem(props) {
         />
         <svg
         className={`checkbox ${isChecked ? "checkbox--active" : ""}`}
-        // This element is purely decorative so
-        // we hide it for screen readers
+        // checkbox code referenced from:
+        // https://dev.to/tomdohnal/custom-checkbox-in-react-animated-and-accessible-3jk9
         aria-hidden="true"
         viewBox="0 0 15 11"
         fill="none"
@@ -29,7 +29,7 @@ export default function ListItem(props) {
           <path
             d="M1 4.5L5 9L14 1"
             strokeWidth="2"
-            stroke={isChecked ? "#fff" : "none"} // only show the checkmark when `isCheck` is `true`
+            stroke={isChecked ? "#fff" : "none"}
           />
         </svg>
       </label>
