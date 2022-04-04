@@ -107,7 +107,7 @@
 }
 
 #addItemForm .done {
-	padding-top: 10em;
+	margin-top: 10em;
 	left:50%;
 	transform: translate(50%, 0);
 }
