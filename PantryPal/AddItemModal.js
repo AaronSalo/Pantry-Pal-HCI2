@@ -5,7 +5,7 @@ import {Modal} from './Modal.js';
 function AddItemModal({onComplete }) {
     const nameFieldRef = useRef();
     const quantityFieldRef = useRef();
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const closeModal = () => {
       console.log("Close the modal");
