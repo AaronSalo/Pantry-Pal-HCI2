@@ -5,7 +5,7 @@ import {Modal} from './Modal.js';
 function AddItemModal() {
 
     const [show, setShow] = useState(true);
-
+    const [count, setCount] = useState(0);
     const closeModal = () => {
       console.log("Close the modal");
       setShow(false);
@@ -14,13 +14,22 @@ function AddItemModal() {
       console.log("Open the modal");
       setShow(true);
     }
-
+    const incrementCount = (count) => {
+      // Update state with incremented value
+      quantity++;
+      console.log(quantity);
+    }
+    const decrementCount = (count) => {
+          // Update state with decremented value
+          quantity--;
+          console.log(quantity);
+    }
     const onFormComplete = () => {
       console.log("Form Completed");
       
       var newItem = {
         product: itemName,
-        quantity: quantity,
+        quantity: count,
         tags: tags,
         forShopping: needToBuy,
       }
@@ -39,7 +48,7 @@ function AddItemModal() {
     }    
     
     function onQuantityChange(text) {
-      quantity = text;
+      count = text;
     }
 
     function needToBuyToggle() {
@@ -102,12 +111,16 @@ function AddItemModal() {
               </div>
               <div>
                 <Text>Quantity </Text>
+                <button onClick={()=>incrementCount(count)}> + </button>
                 <TextInput
                   // Search bar
-                  onChangeText={(text) => onQuantityChange(text)}
-                  placeholder="1"
+                 onChangeText={() => onQuantityChange(count)}
+                  placeholder="0"
                   style={styles.input}
                 />
+                 <button onClick={()=>decrementCount(count)}> - </button>
+
+
               </div>
             </div>
 
