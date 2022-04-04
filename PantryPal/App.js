@@ -27,6 +27,18 @@ export default function App() {
   const [inventoryList, setInventoryList] = useState(initList); //Later on maybe init as empty list
 
 
+  function onAddComplete(newItem) {
+    console.log("Adding new item to list:");
+    console.log(newItem);
+
+    //copying the array and pushing before updating the list is required
+    //view refuses to update if i do it any other way
+    const copy = [...inventoryList];
+    copy.push(newItem);
+    
+    setInventoryList(copy);
+  }
+
   function filterByCategory(category) {
     console.log("Filtering by " + category);
 
@@ -72,14 +84,13 @@ export default function App() {
         <button className="shopping" onClick={() => filterByShoppingList() }> Shopping<br/>List</button>
       </div>
 
-      <ListItem product="Steak" tags={["meat"]} quantity="7" />
       <FlatList
         style={{width: "100%"}}
         data={inventoryList}
         renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
       />
 
-      <AddItemModal />
+      <AddItemModal onComplete= { onAddComplete }/>
 
       <StatusBar style="auto" />
     </View >
