@@ -19,11 +19,25 @@ body {
 	font-family: 'Open Sans';
 	height: 3em;
 	width: 16%;
+
+	padding: 0px;
+	margin: 0px;
+
+	/*background-color: #F4F4FF;*/
+	background-color: #90A0FF;
+	color: #FFFFFF;
+
+	border-style: solid;
+	/*border-color: #D0D0FE;*/
+	border-color: #F4F4FF;
+	border-width: 0.15em;
+	border-radius: 3em;
+}
+
+#filterContainer .shoppingLabel {
+	font-size: 0.75em;
 }
 
 #filterContainer .shopping {
-	padding: 0px;
-	margin: 0px;
-	/*font-size: 0.8em;*/
 	transform: translate(0, -0.65em);
 }

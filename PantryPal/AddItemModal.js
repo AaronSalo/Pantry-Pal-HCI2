@@ -1,10 +1,11 @@
-import React, {useState, Component} from 'react';
+import React, {useState, Component, useRef} from 'react';
 import { TouchableOpacity, TextInput, Text, Pressable, StyleSheet} from 'react-native';
 import {Modal} from './Modal.js';
 
 function AddItemModal({onComplete }) {
-
-    const [show, setShow] = useState(false);
+    const nameFieldRef = useRef();
+    const quantityFieldRef = useRef();
+    const [show, setShow] = useState(true);
 
     const closeModal = () => {
       console.log("Close the modal");
@@ -24,6 +25,19 @@ function AddItemModal({onComplete }) {
         tags: tags,
         forShopping: needToBuy,
       }
+
+      // clear fields
+      nameFieldRef.current.setNativeProps({ text: '' });
+      quantityFieldRef.current.setNativeProps({ text: ''});
+
+      //reset the selected tags
+      tags.forEach( tag => {
+        var tagElement = document.getElementById(tag);
+
+        tagElement.classList.remove("selectedTag")
+        tagElement.classList.add("tag")
+      });
+
       itemName = "";
       quantity = 1;
       tags = [];
@@ -101,6 +115,7 @@ function AddItemModal({onComplete }) {
                   onChangeText={(text) => onNameChange(text)}
                   placeholder="Item Name"
                   style={styles.input}
+                  ref={nameFieldRef}
                 />
               </div>
               <div>
@@ -110,6 +125,7 @@ function AddItemModal({onComplete }) {
                   onChangeText={(text) => onQuantityChange(text)}
                   placeholder="1"
                   style={styles.input}
+                  ref={quantityFieldRef}
                 />
               </div>
             </div>
@@ -169,11 +185,3 @@ const styles = StyleSheet.create({
 });
 
 export default AddItemModal
-
-/* export default function AddItemModal() {
-    return <Modal open={this.state.showModal}>
-      <P>Bunger</P>
-    </Modal>
-}*/
-
-
