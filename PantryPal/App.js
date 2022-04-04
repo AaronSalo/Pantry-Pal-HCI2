@@ -41,15 +41,16 @@ export default function App() {
 
   function onUpdateShoppingList(itemName) {
     console.log("update for shopping");
-    var item = inventoryList.filter(item => item.product == itemName);
-    var other = inventoryList.filter(item => item.product != itemName);
-    item[0].forShopping = !item[0].forShopping;
-    console.log(item);
 
-    var updatedList = other.concat(item);
+    const copy = [...inventoryList];// required to update the page dynamically
+    copy.forEach(item => {
+      if(item.product == itemName) {
+        item.forShopping = !item.forShopping;
+      }
+    });
 
-    setInventoryList(updatedList);
-    console.log(updatedList);
+    setInventoryList(copy);
+    console.log(copy);
   }
 
   function filterByCategory(category) {
