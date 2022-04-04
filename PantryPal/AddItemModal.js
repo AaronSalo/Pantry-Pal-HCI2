@@ -30,6 +30,10 @@ function AddItemModal({onComplete }) {
       nameFieldRef.current.setNativeProps({ text: '' });
       quantityFieldRef.current.setNativeProps({ text: ''});
 
+      var needToBuyTag =  document.getElementById("needToBuy");
+      needToBuyTag.classList.remove("selectedTag");
+      needToBuyTag.classList.add("tag");
+
       //reset the selected tags
       tags.forEach( tag => {
         var tagElement = document.getElementById(tag);
