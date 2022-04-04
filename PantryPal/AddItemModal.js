@@ -24,6 +24,16 @@ function AddItemModal({onComplete }) {
         tags: tags,
         forShopping: needToBuy,
       }
+
+      var nameField = document.getElementById("nameField").clear();
+      //reset the selected tags
+      tags.forEach( tag => {
+        var tagElement = document.getElementById(tag);
+
+        tagElement.classList.remove("selectedTag")
+        tagElement.classList.add("tag")
+      });
+
       itemName = "";
       quantity = 1;
       tags = [];
@@ -101,6 +111,7 @@ function AddItemModal({onComplete }) {
                   onChangeText={(text) => onNameChange(text)}
                   placeholder="Item Name"
                   style={styles.input}
+                  id="nameField"
                 />
               </div>
               <div>
