@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ListItem(props) {
-  const [isChecked, setIsChecked] = useState(false);
+export default function ListItem(props ) {
 
   var renderedTags = [];
   for (var i = 0; i < props.tags.length; i++) {
@@ -10,7 +9,7 @@ export default function ListItem(props) {
 
   return (
     <div id="listItem"
-      className={`${isChecked ? "listItem--active" : ""}`}
+      className={`${props.forShopping ? "listItem--active" : ""}`}
     >
       <label>
         {/* Custom Checkbox 
@@ -19,12 +18,12 @@ export default function ListItem(props) {
         */}
         <input type="checkbox"
           onChange={() => {
-            setIsChecked(!isChecked);
+            props.onUpdateForShopping(props.product);
           }}
         />
         <svg
           // Checkbox
-          className={`checkbox ${isChecked ? "checkbox--active" : ""}`}
+          className={`checkbox ${props.forShopping ? "checkbox--active" : ""}`}
           aria-hidden="true"
           viewBox="0 0 15 11"
           fill="none"
@@ -33,7 +32,7 @@ export default function ListItem(props) {
             // Checkmark Path 
             d="M1 4.5L5 9L14 1"
             strokeWidth="2"
-            stroke={isChecked ? "#fff" : "none"}
+            stroke={props.forShopping ? "#fff" : "none"}
           />
         </svg>
       </label>
