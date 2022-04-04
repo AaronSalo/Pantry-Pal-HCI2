@@ -2,7 +2,7 @@ import React, {useState, Component} from 'react';
 import { TouchableOpacity, TextInput, Text, Pressable, StyleSheet} from 'react-native';
 import {Modal} from './Modal.js';
 
-function AddItemModal() {
+function AddItemModal({onComplete }) {
 
     const [show, setShow] = useState(true);
 
@@ -16,7 +16,7 @@ function AddItemModal() {
     }
 
     const onFormComplete = () => {
-      console.log("Form Completed");
+      console.log("Form Completed");   
       
       var newItem = {
         product: itemName,
@@ -24,8 +24,12 @@ function AddItemModal() {
         tags: tags,
         forShopping: needToBuy,
       }
+      itemName = "";
+      quantity = 1;
+      tags = [];
+      needToBuy = false;
 
-      console.log(newItem); //pass this to the itemlist
+      onComplete(newItem); //pass to the parent function
       closeModal();
     }
 
@@ -66,7 +70,6 @@ function AddItemModal() {
         child.classList.add("selectedTag")
         tags.push(tag);
       }
-      console.log(tags);
     }
 
     return (
