@@ -14,10 +14,10 @@ Project for HCI 2. Pantry inventory application
 
 
 ## GETTING THE EMULATOR/DEVICE to work:
--Install android Studio.
--Open the project on Android Studio, Click on tools -> Device Manager.
--Select 'Create Device' and pick one of the devices (pixel 5 API 26 works well). Then select a recommended system image (Oreo) and finish the download.
--Click on 'Launch AVD' icon and start running the emulator.
--On command line, run 'expo start' which will start the metro builder
--Press a to open on android, and the app should start running on the emulator after some time
--Alternatively, install the app Expo on android to scan the QR code (or scan it directly using iOS)
+-   Install android Studio.
+-   Open the project on Android Studio, Click on tools -> Device Manager.
+-   Select 'Create Device' and pick one of the devices (pixel 5 API 26 works well). Then select a recommended system image (Oreo) and finish the download.
+-   Click on 'Launch AVD' icon and start running the emulator.
+-   On command line, run 'expo start' which will start the metro builder
+-   Press a to open on android, and the app should start running on the emulator after some time
+-   Alternatively, install the app Expo on android to scan the QR code (or scan it directly using iOS)
