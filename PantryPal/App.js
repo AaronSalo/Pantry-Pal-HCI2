@@ -12,13 +12,13 @@ const initList = [
   {
     product: 'Item #1',
     quantity: 1,
-    tags: ['fruit', 'vegetable'],
-    forShopping: true,
+    tags: ['Fruit', 'Veggie'],
+    forShopping: false,
   },
   {
     product: 'Item #2',
     quantity: 2,
-    tags: ['meat'],
+    tags: ['Meat'],
     forShopping: false,
   },
 ]
@@ -39,8 +39,22 @@ export default function App() {
     setInventoryList(copy);
   }
 
+  function onUpdateShoppingList(itemName) {
+    console.log("update for shopping");
+    var item = inventoryList.filter(item => item.product == itemName);
+    var other = inventoryList.filter(item => item.product != itemName);
+    item[0].forShopping = !item[0].forShopping;
+    console.log(item);
+
+    var updatedList = other.concat(item);
+
+    setInventoryList(updatedList);
+    console.log(updatedList);
+  }
+
   function filterByCategory(category) {
     console.log("Filtering by " + category);
+    console.log(inventoryList);
 
     var filteredResults = inventoryList.filter( item => item.tags.includes(category) );
     var otherItems = inventoryList.filter( item => !item.tags.includes(category) );
@@ -59,6 +73,8 @@ export default function App() {
     var otherItems = inventoryList.filter( item => !item.forShopping);
 
     var sortedList = filteredResults.concat(otherItems);
+    console.log("Here is the sorted list");
+    console.log(sortedList);
 
     setInventoryList(sortedList);
     console.log("Filtered List: ");
@@ -87,7 +103,8 @@ export default function App() {
       <FlatList
         style={{width: "100%"}}
         data={inventoryList}
-        renderItem={({ item }) => <ListItem product={item.product} tags={item.tags} quantity={item.quantity} />}
+        renderItem={({ item}) => 
+          <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} />}
       />
 
       <AddItemModal onComplete= { onAddComplete }/>

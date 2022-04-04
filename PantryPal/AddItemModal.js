@@ -4,7 +4,7 @@ import {Modal} from './Modal.js';
 
 function AddItemModal({onComplete }) {
 
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const closeModal = () => {
       console.log("Close the modal");
@@ -131,9 +131,9 @@ function AddItemModal({onComplete }) {
               <div className="tag" id="Fruit">Fruit</div>
             </Pressable>
             <Pressable
-              onPress={() => addTag("Veggies")}
+              onPress={() => addTag("Veggie")}
               style={() => [ { float: "left", }]}>
-            <div className="tag" id="Veggies">Veggies</div>
+            <div className="tag" id="Veggie">Veggie</div>
             </Pressable>
             <Pressable
               onPress={() => addTag("Meat")}
