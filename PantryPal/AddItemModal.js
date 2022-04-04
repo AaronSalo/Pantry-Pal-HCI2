@@ -9,6 +9,7 @@ function AddItemModal({onComplete }) {
 
     const closeModal = () => {
       console.log("Close the modal");
+      clearFields();
       setShow(false);
     }    
     const showModal = () => {
@@ -25,7 +26,13 @@ function AddItemModal({onComplete }) {
         tags: tags,
         forShopping: needToBuy,
       }
+      
+      onComplete(newItem); //pass to the parent function
 
+      closeModal();
+    }
+
+    function clearFields() {
       // clear fields
       nameFieldRef.current.setNativeProps({ text: '' });
       quantityFieldRef.current.setNativeProps({ text: ''});
@@ -46,9 +53,6 @@ function AddItemModal({onComplete }) {
       quantity = 1;
       tags = [];
       needToBuy = false;
-
-      onComplete(newItem); //pass to the parent function
-      closeModal();
     }
 
     var itemName = "";
