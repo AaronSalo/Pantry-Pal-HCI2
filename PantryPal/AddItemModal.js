@@ -16,6 +16,17 @@ function AddItemModal({onComplete }) {
       console.log("Open the modal");
       setShow(true);
     }
+    const incrementCount = () => {
+      // Update state with incremented value
+      quantity++;
+      quantityFieldRef.current.setNativeProps({ text: "hwllo"});
+      //console.log(quantity);
+    }
+    const decrementCount = () => {
+          // Update state with decremented value
+          quantity--;
+          //console.log(quantity);
+    }
 
     const onFormComplete = () => {
       console.log("Form Completed");   
@@ -63,10 +74,7 @@ function AddItemModal({onComplete }) {
     function onNameChange(text) {
       itemName = text;
     }    
-    
-    function onQuantityChange(text) {
-      quantity = text;
-    }
+  
 
     function needToBuyToggle() {
       var child = document.getElementById("needToBuy");
@@ -128,9 +136,9 @@ function AddItemModal({onComplete }) {
               </div>
               <div>
                 <Text>Quantity </Text>
+                <button onClick={incrementCount}> + </button>
                 <TextInput
                   // Search bar
-                  onChangeText={(text) => onQuantityChange(text)}
                   placeholder="1"
                   style={styles.input}
                   ref={quantityFieldRef}
