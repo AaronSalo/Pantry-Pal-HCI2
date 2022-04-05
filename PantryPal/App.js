@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button} from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
 import './App.css';
 import AddItemModal from './AddItemModal.js';
-import {Modal} from './Modal.js';
+import { Modal } from './Modal.js';
 
 //const inventoryList = [
 const initList = [
@@ -35,7 +35,7 @@ export default function App() {
     //view refuses to update if i do it any other way
     const copy = [...inventoryList];
     copy.push(newItem);
-    
+
     setInventoryList(copy);
   }
 
@@ -44,7 +44,7 @@ export default function App() {
 
     const copy = [...inventoryList];// required to update the page dynamically
     copy.forEach(item => {
-      if(item.product == itemName) {
+      if (item.product == itemName) {
         item.forShopping = !item.forShopping;
       }
     });
@@ -53,25 +53,50 @@ export default function App() {
     console.log(copy);
   }
 
+  function searchByText(text) {
+    console.log("Searching by " + text);
+    console.log(inventoryList);
+
+    text = text.toLowerCase();
+
+    var filteredResults = inventoryList.filter(item => item.product.toLowerCase().includes(text) || item.tags.map(element => {
+      return element.toLowerCase();
+    }).includes(text));
+    var otherItems = inventoryList.filter(item => !item.product.toLowerCase().includes(text) && !item.tags.map(element => {
+      return element.toLowerCase();
+    }).includes(text));
+
+    var sortedList = filteredResults.concat(otherItems);
+
+    setInventoryList(sortedList);
+    console.log("Searched List: ");
+    console.log(inventoryList);
+  }
+
+  function onTextChange(text) {
+    // Search as text updates
+    searchByText(text);
+  }
+
   function filterByCategory(category) {
     console.log("Filtering by " + category);
     console.log(inventoryList);
 
-    var filteredResults = inventoryList.filter( item => item.tags.includes(category) );
-    var otherItems = inventoryList.filter( item => !item.tags.includes(category) );
+    var filteredResults = inventoryList.filter(item => item.tags.includes(category));
+    var otherItems = inventoryList.filter(item => !item.tags.includes(category));
 
     var sortedList = filteredResults.concat(otherItems);
 
     setInventoryList(sortedList);
     console.log("Filtered List: ");
     console.log(inventoryList);
-  }  
+  }
 
   function filterByShoppingList() {
     console.log("Filtering by shopping list items");
 
-    var filteredResults = inventoryList.filter( item => item.forShopping);
-    var otherItems = inventoryList.filter( item => !item.forShopping);
+    var filteredResults = inventoryList.filter(item => item.forShopping);
+    var otherItems = inventoryList.filter(item => !item.forShopping);
 
     var sortedList = filteredResults.concat(otherItems);
     console.log("Here is the sorted list");
@@ -93,22 +118,22 @@ export default function App() {
       />
 
       <div id="filterContainer">
-        <button onClick={() => filterByCategory("Fruit") }> Fruit</button>
-        <button onClick={() => filterByCategory("Veggie") }> Veggies</button>
-        <button onClick={() => filterByCategory("Meat") }> Meat</button>
-        <button onClick={() => filterByCategory("Dairy") }> Dairy</button>
-        <button onClick={() => filterByCategory("Organic") }> Organic</button>
-        <button className="shopping" onClick={() => filterByShoppingList() }><div className="shoppingLabel">Shopping<br/>List</div></button>
+        <button onClick={() => filterByCategory("Fruit")}> Fruit</button>
+        <button onClick={() => filterByCategory("Veggie")}> Veggies</button>
+        <button onClick={() => filterByCategory("Meat")}> Meat</button>
+        <button onClick={() => filterByCategory("Dairy")}> Dairy</button>
+        <button onClick={() => filterByCategory("Organic")}> Organic</button>
+        <button className="shopping" onClick={() => filterByShoppingList()}><div className="shoppingLabel">Shopping<br />List</div></button>
       </div>
 
       <FlatList
-        style={{width: "100%"}}
+        style={{ width: "100%" }}
         data={inventoryList}
-        renderItem={({ item}) => 
+        renderItem={({ item }) =>
           <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} />}
       />
 
-      <AddItemModal onComplete= { onAddComplete }/>
+      <AddItemModal onComplete={onAddComplete} />
 
       <StatusBar style="auto" />
     </View >
@@ -118,11 +143,6 @@ export default function App() {
 function onPressInSearch() {
   // What happens when you press the search bar
   console.log("Pressed search button");
-}
-
-function onTextChange(text) {
-  // What happens as you type in the search bar
-  console.log(text);
 }
 
 
