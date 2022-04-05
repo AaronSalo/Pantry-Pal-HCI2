@@ -1,5 +1,5 @@
 import React, {useState, Component, useRef} from 'react';
-import { TouchableOpacity, TextInput, Text, Pressable, StyleSheet} from 'react-native';
+import { TouchableOpacity, TextInput, Text, Pressable, StyleSheet, View} from 'react-native';
 import {Modal} from './Modal.js';
 
 function AddItemModal({onComplete }) {
@@ -65,8 +65,20 @@ function AddItemModal({onComplete }) {
       itemName = text;
     }    
     
-    function onQuantityChange(text) {
-      quantity = text;
+
+
+    function increment() {
+      console.log("We are incremengint now");
+      quantity++;
+      document.getElementById("quantity").textContent  = quantity;
+    }
+
+    function decrement() {
+      console.log("We are decremengint now");
+      if(quantity > 0){
+      quantity--;
+      document.getElementById("quantity").textContent  = quantity;
+      }
     }
 
     function needToBuyToggle() {
@@ -128,14 +140,21 @@ function AddItemModal({onComplete }) {
                 />
               </div>
               <div>
-                <Text>Quantity </Text>
-                <TextInput
-                  // Search bar
-                  onChangeText={(text) => onQuantityChange(text)}
-                  placeholder="1"
-                  style={styles.input}
-                  ref={quantityFieldRef}
-                />
+                
+                <View style={{ flexDirection: 'row', }}>
+                <Text> Quantity </Text>
+                <Pressable 
+                  onPress={increment}
+                  style={styles.button}>
+                   <Text style={styles.text}>  +  </Text>
+                </Pressable>
+                <div id="quantity"> 1  </div>
+                <Pressable
+                  onPress={decrement}
+                  style={styles.button}>
+                  <Text style={styles.text}> -  </Text>
+                </Pressable>
+                </View>
               </div>
             </div>
 
@@ -183,13 +202,36 @@ function AddItemModal({onComplete }) {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    flexDirection: 'row',
+    height: 20,
+    width: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: '7%',
+    paddingHorizontal: '7%',
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#90A0FF',
+  },
   input: {
+
     height: 20,
     width: '50%',
     borderColor: 'gray',
     borderWidth: 1,
     textAlign: 'center',
     borderRadius: 20,
+  },
+  text: {
+    flex: 1, 
+    position: 'relative',
+    fontSize: 24,
+    lineHeight: 21,
+    alignItems: 'center',
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
 
