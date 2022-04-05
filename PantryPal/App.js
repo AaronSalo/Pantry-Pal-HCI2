@@ -107,6 +107,20 @@ export default function App() {
     console.log(inventoryList);
   }
 
+  function removeItem(itemName) {
+    console.log("Removing item " + itemName);
+
+    const copy = [...inventoryList];
+    copy.forEach(item => {
+      if (item.product == itemName) {
+        copy.splice(copy.indexOf(item), 1);
+      }
+    });
+
+    setInventoryList(copy);
+    console.log(inventoryList);
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -130,7 +144,7 @@ export default function App() {
         style={{ width: "100%" }}
         data={inventoryList}
         renderItem={({ item }) =>
-          <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} />}
+          <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} onRemove={removeItem} />}
       />
 
       <AddItemModal onComplete={onAddComplete} />
@@ -139,6 +153,8 @@ export default function App() {
     </View >
   );
 }
+
+
 
 function onPressInSearch() {
   // What happens when you press the search bar

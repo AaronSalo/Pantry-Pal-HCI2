@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ListItem(props ) {
+export default function ListItem(props) {
 
   var renderedTags = [];
   for (var i = 0; i < props.tags.length; i++) {
@@ -42,12 +42,12 @@ export default function ListItem(props ) {
         <div className="title">
           {props.product}
         </div>
-          <div className="tagContainer" dangerouslySetInnerHTML={{__html: renderedTags}}/>
+        <div className="tagContainer" dangerouslySetInnerHTML={{ __html: renderedTags }} />
       </div>
 
       {/* Item Quantity and Remove */}
       <div className="right">
-        <div className="remove"><a href="javascript:void(0);" >X</a></div>
+        <div className="remove"><span onClick={() => { props.onRemove(props.product) }}>X</span></div>
         <div className="quantity">{props.quantity}</div>
       </div>
     </div>
