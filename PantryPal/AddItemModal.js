@@ -98,14 +98,14 @@ function AddItemModal({onComplete }) {
       <div>
         <TouchableOpacity
           style={{
+            position: "fixed",
             borderWidth: 2,
             borderColor: 'rgba(0,0,0,0.2)',
             alignItems: 'center',
             justifyContent: 'center',
             width: 70,
-            position: 'absolute',
-            bottom: 10,
-            right: 10,
+            bottom: "2em",
+            right: "2em",
             height: 70,
             backgroundColor: '#fff',
             borderRadius: 100,

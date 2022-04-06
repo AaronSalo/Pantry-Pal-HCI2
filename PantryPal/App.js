@@ -123,25 +123,28 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        // Search bar
-        style={styles.input}
-        onFocus={() => onPressInSearch()}
-        onChangeText={(text) => onTextChange(text)}
-        placeholder="Search"
-      />
+      <div id="header">
+        <TextInput
+          // Search bar
+          style={styles.input}
+          onFocus={() => onPressInSearch()}
+          onChangeText={(text) => onTextChange(text)}
+          placeholder="Search"
+        />
 
-      <div id="filterContainer">
-        <button onClick={() => filterByCategory("Fruit")}> Fruit</button>
-        <button onClick={() => filterByCategory("Veggie")}> Veggies</button>
-        <button onClick={() => filterByCategory("Meat")}> Meat</button>
-        <button onClick={() => filterByCategory("Dairy")}> Dairy</button>
-        <button onClick={() => filterByCategory("Organic")}> Organic</button>
-        <button className="shopping" onClick={() => filterByShoppingList()}><div className="shoppingLabel">Shopping<br />List</div></button>
+        <div id="filterContainer">
+          <button onClick={() => filterByCategory("Fruit")}> Fruit</button>
+          <button onClick={() => filterByCategory("Veggie")}> Veggies</button>
+          <button onClick={() => filterByCategory("Meat")}> Meat</button>
+          <button onClick={() => filterByCategory("Dairy")}> Dairy</button>
+          <button onClick={() => filterByCategory("Organic")}> Organic</button>
+          <button className="shopping" onClick={() => filterByShoppingList()}><div className="shoppingLabel">Shopping<br />List</div></button>
+        </div>
       </div>
 
+
       <FlatList
-        style={{ width: "100%" }}
+        style={{ width: "100%", top: "8em", "z-index": "-69420" }}
         data={inventoryList}
         renderItem={({ item }) =>
           <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} onRemove={removeItem} />}
