@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import ListItem from './ListItem.js';
 import './ListItem.css';
 import './App.css';
 import AddItemModal from './AddItemModal.js';
-import { Modal } from './Modal.js';
 
-//const inventoryList = [
 const initList = [
   {
     product: 'Item #1',
@@ -25,7 +23,6 @@ const initList = [
 
 export default function App() {
   const [inventoryList, setInventoryList] = useState(initList); //Later on maybe init as empty list
-
 
   function onAddComplete(newItem) {
     console.log("Adding new item to list:");
@@ -78,7 +75,20 @@ export default function App() {
     searchByText(text);
   }
 
+  function setActiveButton(aFilter) {
+    const filterOptions = [ "FruitFilter", "VeggieFilter", "MeatFilter", "DairyFilter", "OrganicFilter", "ShoppingFilter"]
+
+    filterOptions.forEach( filterOption => {
+      var filterElement = document.getElementById(filterOption);
+
+      if(aFilter === filterOption) filterElement.classList.add("button--active");
+      else filterElement.classList.remove("button--active");
+    });
+  }
+
   function filterByCategory(category) {
+    setActiveButton(category+"Filter");
+
     console.log("Filtering by " + category);
     console.log(inventoryList);
 
@@ -93,6 +103,8 @@ export default function App() {
   }
 
   function filterByShoppingList() {
+    setActiveButton("ShoppingFilter");
+
     console.log("Filtering by shopping list items");
 
     var filteredResults = inventoryList.filter(item => item.forShopping);
@@ -133,12 +145,12 @@ export default function App() {
         />
 
         <div id="filterContainer">
-          <button onClick={() => filterByCategory("Fruit")}> Fruit</button>
-          <button onClick={() => filterByCategory("Veggie")}> Veggies</button>
-          <button onClick={() => filterByCategory("Meat")}> Meat</button>
-          <button onClick={() => filterByCategory("Dairy")}> Dairy</button>
-          <button onClick={() => filterByCategory("Organic")}> Organic</button>
-          <button className="shopping" onClick={() => filterByShoppingList()}><div className="shoppingLabel">Shopping<br />List</div></button>
+          <button id="FruitFilter" onClick={() => filterByCategory("Fruit")}> Fruit</button>
+          <button id="VeggieFilter" onClick={() => filterByCategory("Veggie")}> Veggies</button>
+          <button id="MeatFilter" onClick={() => filterByCategory("Meat")}> Meat</button>
+          <button id="DairyFilter" onClick={() => filterByCategory("Dairy")}> Dairy</button>
+          <button id="OrganicFilter" onClick={() => filterByCategory("Organic")}> Organic</button>
+          <button id="ShoppingFilter" className="shopping" onClick={() => filterByShoppingList()}><div className="shoppingLabel">Shopping<br />List</div></button>
         </div>
       </div>
 
@@ -157,21 +169,9 @@ export default function App() {
   );
 }
 
-
-
 function onPressInSearch() {
   // What happens when you press the search bar
   console.log("Pressed search button");
-}
-
-
-function renderItem(item) {
-  if (item.forShopping) {
-    return <Text style={styles.shoppingItem}>{item.product} x{item.quantity}</Text>;
-  }
-  else {
-    return <Text style={styles.item}>{item.product} x{item.quantity}</Text>;
-  }
 }
 
 const styles = StyleSheet.create({
