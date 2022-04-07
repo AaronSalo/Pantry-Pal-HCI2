@@ -36,6 +36,20 @@ export default function App() {
     setInventoryList(copy);
   }
 
+  function onChangeQuantity(itemName, newQuantity) {
+    console.log("Changing quantity of item " + itemName + " to " + newQuantity);
+
+    const copy = [...inventoryList];
+    copy.forEach(item => {
+      if (item.product == itemName) {
+        item.quantity = newQuantity;
+      }
+    });
+
+    setInventoryList(copy);
+    console.log(inventoryList);
+  }
+
   function onUpdateShoppingList(itemName) {
     console.log("update for shopping");
 
@@ -159,7 +173,9 @@ export default function App() {
         style={{ width: "100%", top: "8em", "z-index": "-69420" }}
         data={inventoryList}
         renderItem={({ item }) =>
-          <ListItem product={item.product} tags={item.tags} quantity={item.quantity} forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} onRemove={removeItem} />}
+          <ListItem product={item.product} tags={item.tags} quantity={item.quantity} 
+          forShopping={item.forShopping} onUpdateForShopping={onUpdateShoppingList} 
+          onRemove={removeItem} onChangeQuantity={onChangeQuantity}/>}
       />
 
       <AddItemModal onComplete={onAddComplete} />

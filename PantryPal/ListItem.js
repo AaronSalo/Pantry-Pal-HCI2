@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import QuantityChangeModal from './QuantityChangeModal.js';
 
 export default function ListItem(props) {
 
@@ -48,7 +49,7 @@ export default function ListItem(props) {
       {/* Item Quantity and Remove */}
       <div className="right">
         <div className="remove"><span onClick={() => { props.onRemove(props.product) }}>X</span></div>
-        <div className="quantity">{props.quantity}</div>
+        <QuantityChangeModal product={props.product} quantity={props.quantity} onChangeQuantity={props.onChangeQuantity}/>
       </div>
     </div>
   );

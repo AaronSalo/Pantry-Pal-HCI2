@@ -23,6 +23,21 @@
   /*border-radius: 0.5em 0.5em 0 0;*/
 }
 
+.modal-center-float-main {
+	position:relative;
+	background: #F7F7FF;
+	width: 60%;
+	height: 10em;
+	bottom:0;
+	left:20%;
+  
+	padding-top: 0.3em;
+	border-style: solid;
+	border-color: #D0D0DE;
+	border-width: 0.15em 0 0 0;
+	/*border-radius: 0.5em 0.5em 0 0;*/
+  }
+
 .modal-main button {
 	font-size: 1em;
 	padding: 0.5em;
