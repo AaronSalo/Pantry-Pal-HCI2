@@ -32,14 +32,20 @@ body {
 	margin: 0px;
 
 	/*background-color: #F4F4FF;*/
-	background-color: #90A0FF;
-	color: #FFFFFF;
+	background-color: #EFFFFF;
+	color: #8090EF;
 
 	border-style: solid;
 	/*border-color: #D0D0FE;*/
-	border-color: #F4F4FF;
+	border-color: #90A0FF;
 	border-width: 0.15em;
 	border-radius: 3em;
+}
+
+#filterContainer .button--active {
+	color: #FFFFFF;
+	border-color: #90A0FF;
+	background-color: #90A0FF;
 }
 
 #filterContainer .shoppingLabel {
