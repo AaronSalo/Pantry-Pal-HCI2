@@ -16,16 +16,21 @@ function QuantityChangeModal(props) {
 
     function increment() {
         quantity++;
-        document.getElementById("changeQuantity").textContent  = quantity;
+        document.getElementById(id).textContent  = quantity;
         console.log("new quantity " + quantity); 
     }
 
     function decrement() {
         if(quantity > 1){
             quantity--;
-            document.getElementById("changeQuantity").textContent  = quantity;
+            document.getElementById(id).textContent  = quantity;
             console.log("new quantity " + quantity); 
         }
+    }
+
+    function formComplete() {
+        props.onChangeQuantity(props.product, quantity);
+        closeQuantityModal();
     }
 
     var quantity = props.quantity;
@@ -37,7 +42,7 @@ function QuantityChangeModal(props) {
                 onPress={showQuantityModal }>
             <div className="quantity"> {props.quantity}</div>
             </Pressable>
-            <CenterFloatModal handleShow={show} handleClose={ closeQuantityModal } onFormComplete={ closeQuantityModal }>
+            <CenterFloatModal handleShow={show} handleClose={ closeQuantityModal } onFormComplete={ formComplete }>
                 <div>{props.product}</div>                
                 <Text style={styles.text} > Quantity </Text>
                 <Pressable
@@ -45,7 +50,7 @@ function QuantityChangeModal(props) {
                   style={styles.button}>
                   <div>-</div>
                 </Pressable>
-                <div>1</div>
+                <div id={id}>1</div>
                 <Pressable 
                   onPress={increment}
                   style={styles.button} >
