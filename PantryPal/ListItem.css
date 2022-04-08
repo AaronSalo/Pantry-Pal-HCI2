@@ -37,6 +37,7 @@ input[type="checkbox"] {
 	background: rgb(100, 204, 218);
 }
 
+
 #listItem .left {
 	float: left;
 	width: 2em;
@@ -45,7 +46,7 @@ input[type="checkbox"] {
 #listItem .middle {
 	display: block;
 	float: left;
-	padding-left: 2em;
+	padding-left: 1em;
 	padding-top: 0.25em;
 }
 
@@ -80,17 +81,21 @@ input[type="checkbox"] {
 
 #listItem .quantity {
 	float: right;
+	text-align: center;
 	font-size: 1.5em;
-	padding-right: 2.5em;
-	margin-right: 2.5em;
-	padding-top: 0.7em;
-	padding-bottom: 0.7em;
+
+	margin-right: 1.5em;
+	margin-top: 0.25em;
+	padding: 0.7em 1em 0.7em 0.5em;
 }
 
 #listItem .remove {
 	float: right;
-	padding-right: 0.5em;
-	padding-top: 0.25em;
+
+	margin-top: 0.2em;
+	padding: 0.25em 0.25em;
+
+	text-align: center;
 	font-size: 2em;
 }
 

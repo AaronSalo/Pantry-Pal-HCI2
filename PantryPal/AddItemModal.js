@@ -117,7 +117,7 @@ function AddItemModal({onComplete }) {
           <div className="topPart">
             <div className="left">
               <div>
-                <Text>Item Name </Text>
+                <Text>Item Name</Text>
                 <TextInput
                   // Search bar
                   onChangeText={(text) => onNameChange(text)}
@@ -184,7 +184,7 @@ function AddItemModal({onComplete }) {
 const styles = StyleSheet.create({
   input: {
     height: 20,
-    width: '60%',
+    width: '50%',
     borderColor: 'gray',
     borderWidth: 1,
     textAlign: 'center',
