@@ -1,11 +1,11 @@
-import React, {useState, Component, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import { TouchableOpacity, TextInput, Text, Pressable, StyleSheet, View} from 'react-native';
 import {Modal} from './Modal.js';
 
 function AddItemModal({onComplete }) {
     const nameFieldRef = useRef();
-    const quantityFieldRef = useRef();
     const [show, setShow] = useState(false);
+    const [disable, setDisable] = React.useState(false);
 
     const closeModal = () => {
       console.log("Close the modal");
@@ -36,7 +36,6 @@ function AddItemModal({onComplete }) {
     function clearFields() {
       // clear fields
       nameFieldRef.current.setNativeProps({ text: '' });
-      quantityFieldRef.current.setNativeProps({ text: ''});
 
       var needToBuyTag =  document.getElementById("needToBuy");
       needToBuyTag.classList.remove("selectedTag");
@@ -52,6 +51,7 @@ function AddItemModal({onComplete }) {
 
       itemName = "";
       quantity = 1;
+      document.getElementById("quantity").textContent = quantity;
       tags = [];
       needToBuy = false;
     }
@@ -71,14 +71,23 @@ function AddItemModal({onComplete }) {
       console.log("We are incremengint now");
       quantity++;
       document.getElementById("quantity").textContent  = quantity;
+      if(quantity > 1)
+      {
+        setDisable(false);
+      }
     }
 
     function decrement() {
       console.log("We are decremengint now");
-      if(quantity > 0){
+      if(quantity > 1){
       quantity--;
       document.getElementById("quantity").textContent  = quantity;
       }
+      if(quantity == 1)
+      {
+        setDisable(true);
+      }
+ 
     }
 
     function needToBuyToggle() {
@@ -130,7 +139,7 @@ function AddItemModal({onComplete }) {
           <div className="topPart">
             <div className="left">
               <div>
-                <Text>Item Name</Text>
+                <Text style={styles.text}>Item Name </Text>
                 <TextInput
                   // Search bar
                   onChangeText={(text) => onNameChange(text)}
@@ -142,17 +151,32 @@ function AddItemModal({onComplete }) {
               <div>
                 
                 <View style={{ flexDirection: 'row', }}>
-                <Text> Quantity </Text>
-                <Pressable 
-                  onPress={increment}
-                  style={styles.button}>
-                   <Text style={styles.text}>  +  </Text>
-                </Pressable>
-                <div id="quantity"> 1  </div>
+                <Text style={styles.text} > Quantity </Text>
                 <Pressable
                   onPress={decrement}
-                  style={styles.button}>
-                  <Text style={styles.text}> -  </Text>
+                  style={{    
+                    height: 10,
+                    width: 5,
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                    marginRight: 10,
+                    marginLeft: 10,
+                    paddingVertical: '7%',
+                    paddingHorizontal: '7%',
+                    textAlign: 'center',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    backgroundColor: '#90A0FF',
+                    color: 'white' , 
+                    opacity: disable ? 0.5 : 1.0,
+                    }}>
+                  -
+                </Pressable>
+                <div id="quantity" > 1  </div>
+                <Pressable 
+                  onPress={increment}
+                  style={styles.button} >
+                  +
                 </Pressable>
                 </View>
               </div>
@@ -203,16 +227,19 @@ function AddItemModal({onComplete }) {
 
 const styles = StyleSheet.create({
   button: {
-    flexDirection: 'row',
-    height: 20,
-    width: 10,
-    alignItems: 'center',
+    height: 10,
+    width: 5,
     justifyContent: 'center',
+    alignContent: 'center',
+    marginRight: 10,
+    marginLeft: 10,
     paddingVertical: '7%',
     paddingHorizontal: '7%',
-    borderRadius: 4,
-    elevation: 3,
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
     backgroundColor: '#90A0FF',
+    color: 'white',
   },
   input: {
 
@@ -222,16 +249,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     textAlign: 'center',
     borderRadius: 20,
-  },
-  text: {
-    flex: 1, 
-    position: 'relative',
-    fontSize: 24,
-    lineHeight: 21,
-    alignItems: 'center',
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
+    color: 'black',
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
   },
 });
 
