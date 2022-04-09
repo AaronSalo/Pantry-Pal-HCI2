@@ -8,17 +8,107 @@ import AddItemModal from './AddItemModal.js';
 
 const initList = [
   {
-    product: 'Item #1',
-    quantity: 1,
-    tags: ['Fruit', 'Veggie'],
-    forShopping: false,
-  },
-  {
-    product: 'Item #2',
-    quantity: 2,
-    tags: ['Meat'],
-    forShopping: false,
-  },
+    "product": "Almond Flour",
+    "quantity": 1,
+    "tags": [
+        "Organic"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Beef",
+    "quantity": 1,
+    "tags": [
+        "Meat"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Cake",
+    "quantity": 1,
+    "tags": [
+        "Dairy"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Cheddar cheese",
+    "quantity": 1,
+    "tags": [
+        "Dairy"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Chocolate Milk",
+    "quantity": 1,
+    "tags": [
+        "Dairy"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Flour",
+    "quantity": 1,
+    "tags": [
+        "Organic"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Ham",
+    "quantity": 1,
+    "tags": [
+        "Meat"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Ketchup",
+    "quantity": 1,
+    "tags": [],
+    "forShopping": false
+},
+{
+    "product": "Mayonnaise",
+    "quantity": 1,
+    "tags": [],
+    "forShopping": false
+},
+{
+    "product": "Mustard",
+    "quantity": 1,
+    "tags": [],
+    "forShopping": false
+},
+{
+    "product": "Onions",
+    "quantity": 1,
+    "tags": [
+        "Veggie"
+    ],
+    "forShopping": false
+},
+{
+    "product": "Salt",
+    "quantity": 1,
+    "tags": [],
+    "forShopping": false
+},
+{
+    "product": "Sugar",
+    "quantity": 1,
+    "tags": [],
+    "forShopping": false
+},
+{
+    "product": "Yogurt",
+    "quantity": 1,
+    "tags": [
+        "Dairy"
+    ],
+    "forShopping": false
+}
 ]
 
 export default function App() {

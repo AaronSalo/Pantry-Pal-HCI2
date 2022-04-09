@@ -20,15 +20,16 @@ function AddItemModal({onComplete }) {
     const onFormComplete = () => {
       console.log("Form Completed");   
       
-      var newItem = {
-        product: itemName,
-        quantity: quantity,
-        tags: tags,
-        forShopping: needToBuy,
-      }
-      
-      onComplete(newItem); //pass to the parent function
-
+      if(itemName.trim().length > 0) {
+        var newItem = {
+          product: itemName,
+          quantity: quantity,
+          tags: tags,
+          forShopping: needToBuy,
+        }
+        
+        onComplete(newItem); //pass to the parent function
+    }
       closeModal();
     }
 
@@ -117,7 +118,7 @@ function AddItemModal({onComplete }) {
           <div className="topPart">
             <div className="left">
               <div>
-                <Text>Item Name </Text>
+                <Text>Item Name</Text>
                 <TextInput
                   // Search bar
                   onChangeText={(text) => onNameChange(text)}
@@ -184,7 +185,7 @@ function AddItemModal({onComplete }) {
 const styles = StyleSheet.create({
   input: {
     height: 20,
-    width: '60%',
+    width: '50%',
     borderColor: 'gray',
     borderWidth: 1,
     textAlign: 'center',
