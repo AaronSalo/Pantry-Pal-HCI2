@@ -24,20 +24,12 @@ const initList = [
     "forShopping": false
 },
 {
-    "product": "Cake",
-    "quantity": 1,
-    "tags": [
-        "Dairy"
-    ],
-    "forShopping": false
-},
-{
     "product": "Cheddar cheese",
     "quantity": 1,
     "tags": [
         "Dairy"
     ],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Chocolate Milk",
@@ -67,19 +59,19 @@ const initList = [
     "product": "Ketchup",
     "quantity": 1,
     "tags": [],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Mayonnaise",
     "quantity": 1,
     "tags": [],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Mustard",
     "quantity": 1,
     "tags": [],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Onions",
@@ -87,19 +79,19 @@ const initList = [
     "tags": [
         "Veggie"
     ],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Salt",
     "quantity": 1,
     "tags": [],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Sugar",
     "quantity": 1,
     "tags": [],
-    "forShopping": false
+    "forShopping": true
 },
 {
     "product": "Yogurt",
@@ -107,7 +99,7 @@ const initList = [
     "tags": [
         "Dairy"
     ],
-    "forShopping": false
+    "forShopping": true
 }
 ]
 

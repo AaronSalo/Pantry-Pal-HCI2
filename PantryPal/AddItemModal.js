@@ -68,7 +68,6 @@ function AddItemModal({onComplete }) {
 
 
     function increment() {
-      console.log("We are incremengint now");
       quantity++;
       document.getElementById("quantity").textContent  = quantity;
       if(quantity > 1)
@@ -78,7 +77,6 @@ function AddItemModal({onComplete }) {
     }
 
     function decrement() {
-      console.log("We are decremengint now");
       if(quantity > 1){
       quantity--;
       document.getElementById("quantity").textContent  = quantity;
@@ -170,13 +168,13 @@ function AddItemModal({onComplete }) {
                     color: 'white' , 
                     opacity: disable ? 0.5 : 1.0,
                     }}>
-                  -
+                  <div>-</div>
                 </Pressable>
                 <div id="quantity" > 1  </div>
                 <Pressable 
                   onPress={increment}
                   style={styles.button} >
-                  +
+                  <div>+</div>
                 </Pressable>
                 </View>
               </div>
