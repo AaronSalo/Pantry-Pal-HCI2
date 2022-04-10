@@ -49,10 +49,15 @@
   display: none;
 }
 
+#quantity {
+	font-size: 20pt;
+}
+
 #addItemForm .left {
+	max-width: 16em;
 	float: left;
 	padding-top: 0.5em;
-	padding-left: 1em;
+	margin-left: 0.5em;
 }
 #addItemForm .right {
 	float: right;
@@ -112,13 +117,14 @@
 	border-radius: 1em;
 }
 #addItemForm .buyTag {
-	float: left;
+	float: right;
 	display: block;
 	text-align: center;
 
 	height: 3em;
 	width: 4.5em;
 	padding-top: 0.5em;
+	margin: 0;
 
 	border-color: #90A0FF;
 	border-style: solid;

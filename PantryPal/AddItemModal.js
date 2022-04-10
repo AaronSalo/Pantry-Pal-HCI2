@@ -139,7 +139,7 @@ function AddItemModal({onComplete }) {
           <div className="topPart">
             <div className="left">
               <div>
-                <Text style={styles.text}>Item Name </Text>
+                <Text style={styles.text}>Item Name</Text>
                 <TextInput
                   // Search bar
                   onChangeText={(text) => onNameChange(text)}
@@ -151,28 +151,13 @@ function AddItemModal({onComplete }) {
               <div>
                 
                 <View style={{ flexDirection: 'row', }}>
-                <Text style={styles.text} > Quantity </Text>
+                <Text style={styles.text} >Quantity</Text>
                 <Pressable
                   onPress={decrement}
-                  style={{    
-                    height: 10,
-                    width: 5,
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                    marginRight: 10,
-                    marginLeft: 10,
-                    paddingVertical: '7%',
-                    paddingHorizontal: '7%',
-                    textAlign: 'center',
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    backgroundColor: '#90A0FF',
-                    color: 'white' , 
-                    opacity: disable ? 0.5 : 1.0,
-                    }}>
+                  style={styles.button}>
                   -
                 </Pressable>
-                <div id="quantity" > 1  </div>
+                <div id="quantity" >1</div>
                 <Pressable 
                   onPress={increment}
                   style={styles.button} >
@@ -233,8 +218,13 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     marginRight: 10,
     marginLeft: 10,
-    paddingVertical: '7%',
-    paddingHorizontal: '7%',
+    marginTop: "0.1em",
+    paddingTop: '0.7em',
+    paddingRight: '0.8em',
+    paddingBottom: '0.7em',
+    paddingLeft: '0.3em',
+    //paddingVertical: '0.75em',
+    //paddingHorizontal: '0.7em',
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
@@ -257,6 +247,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     letterSpacing: 0.25,
+    marginTop: "0.2em",
   },
 });
 
